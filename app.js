@@ -12,6 +12,8 @@ const dishRouter = require('./routes/dishRouter');
 const promoRouter = require('./routes/promoRouter');
 const leaderRouter = require('./routes/leaderRouter');
 const mongoose = require('mongoose');
+var passport = require('passport');
+var authenticate = require('./authenticate');
 mongoose.Promise = require('bluebird');
 
 const Dishes = require('./models/dishes');
@@ -19,7 +21,7 @@ const Dishes = require('./models/dishes');
 const url = 'mongodb://localhost:27017/conFusion';
 const connect = mongoose.connect(url);
 connect.then((db) => {
-  console.log("Connected correctly to server");
+    console.log("Connected correctly to server");
 }, (err) => { console.log(err); });
 var app = express();
 
@@ -39,27 +41,22 @@ app.use(session({
     saveUninitialized: false,
     resave: false,
     store: new fileStore()
-  }));
-  app.use('/', index);
-  app.use('/users', users);
-  function auth (req, res, next) {
-    console.log(req.session);
-
-  if(!req.session.user) {
-      var err = new Error('You are not authenticated!');
-      err.status = 403;
-      return next(err);
-  }
-  else {
-    if (req.session.user === 'authenticated') {
-      next();
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use('/', index);
+app.use('/users', users);
+function auth(req, res, next) {
+    console.log(req.user);
+    if (!req.user) {
+        var err = new Error('You are not authenticated!');
+        res.setHeader('WWW-Authenticate', 'Basic');
+        err.status = 401;
+        next(err);
     }
     else {
-      var err = new Error('You are not authenticated!');
-      err.status = 403;
-      return next(err);
+        next();
     }
-  }
 }
 
 app.use(auth);
@@ -73,21 +70,21 @@ app.use('/promotions', promoRouter);
 app.use('/leaders', leaderRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+app.use(function (req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.use(function (err, req, res, next) {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
 });
 
 module.exports = app;
