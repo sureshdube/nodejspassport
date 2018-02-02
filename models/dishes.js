@@ -3,13 +3,13 @@ require('mongoose-currency').loadType(mongoose);
 var Currency = mongoose.Types.Currency;
 const Schema = mongoose.Schema;
 var commentSchema = new Schema({
-    rating:  {
+    rating: {
         type: Number,
         min: 1,
         max: 5,
         required: true
     },
-    comment:  {
+    comment: {
         type: String,
         required: true
     },
@@ -18,8 +18,8 @@ var commentSchema = new Schema({
         ref: 'User'
     }
 }, {
-    timestamps: true
-});
+        timestamps: true
+    });
 
 
 var dishSchema = new Schema({
@@ -51,12 +51,12 @@ var dishSchema = new Schema({
     },
     featured: {
         type: Boolean,
-        default:false      
+        default: false
     },
-    comments:[commentSchema]
+    comments: [commentSchema]
 }, {
-    timestamps: true
-});
+        timestamps: true
+    });
 
-var Dishes = mongoose.model('Dish',dishSchema);
+var Dishes = mongoose.model('Dish', dishSchema);
 module.exports = Dishes;
