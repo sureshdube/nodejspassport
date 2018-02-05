@@ -10,7 +10,7 @@ router.use(bodyParser.json());
 
 router.route('/')
 .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
-get(cors.cors,authenticate.verifyUser,authenticate.verifyAdmin,function (req, res, next) {
+.get(cors.cors,authenticate.verifyUser,authenticate.verifyAdmin,function (req, res, next) {
   User.find({})
   .then((users) => {
       res.statusCode = 200;
@@ -55,6 +55,15 @@ router.post('/login',cors.corsWithOptions, passport.authenticate('local'), (req,
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
   res.json({success: true, token: token, status: 'You are successfully logged in!'});
+});
+
+router.get('/facebook/token', passport.authenticate('facebook-token'), (req, res) => {
+  if (req.user) {
+    var token = authenticate.getToken({_id: req.user._id});
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'application/json');
+    res.json({success: true, token: token, status: 'You are successfully logged in!'});
+  }
 });
 
 router.get('/logout', (req, res) => {
