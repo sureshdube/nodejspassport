@@ -1,0 +1,47 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/Users/sureshd/npm-global/bin/npm',
+1 verbose cli   'start' ]
+2 info using npm@4.0.5
+3 info using node@v6.9.0
+4 verbose run-script [ 'prestart', 'start', 'poststart' ]
+5 info lifecycle confusionserver@0.0.0~prestart: confusionserver@0.0.0
+6 silly lifecycle confusionserver@0.0.0~prestart: no script for prestart, continuing
+7 info lifecycle confusionserver@0.0.0~start: confusionserver@0.0.0
+8 verbose lifecycle confusionserver@0.0.0~start: unsafe-perm in lifecycle true
+9 verbose lifecycle confusionserver@0.0.0~start: PATH: /Users/sureshd/npm-global/lib/node_modules/npm/bin/node-gyp-bin:/Users/sureshd/Documents/Personal/Courses/courseraNodejs/conFusionServer/node_modules/.bin:/Users/sureshd/Documents/installation/sonar-runner-2.4/bin:/opt/local/bin:/opt/local/sbin:/opt/local/bin:/opt/local/sbin:/opt/local/bin:/opt/local/sbin:/Users/sureshd/npm-global/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/sureshd/Documents/installation/sonar-runner-2.4/bin:/opt/local/bin:/opt/local/sbin:/Users/sureshd/npm-global/bin:/usr/local/apache-maven-3.3.3/bin:/Users/sureshd/npm-global:/Users/sureshd/Documents/installation/azurecli/bin:/usr/local/apache-maven-3.3.3/bin:/Users/sureshd/npm-global:/Users/sureshd/Documents/installation/azurecli/bin
+10 verbose lifecycle confusionserver@0.0.0~start: CWD: /Users/sureshd/Documents/Personal/Courses/courseraNodejs/conFusionServer
+11 silly lifecycle confusionserver@0.0.0~start: Args: [ '-c', 'node ./bin/www' ]
+12 silly lifecycle confusionserver@0.0.0~start: Returned: code: 1  signal: null
+13 info lifecycle confusionserver@0.0.0~start: Failed to exec start script
+14 verbose stack Error: confusionserver@0.0.0 start: `node ./bin/www`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (/Users/sureshd/npm-global/lib/node_modules/npm/lib/utils/lifecycle.js:279:16)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at EventEmitter.emit (events.js:191:7)
+14 verbose stack     at ChildProcess.<anonymous> (/Users/sureshd/npm-global/lib/node_modules/npm/lib/utils/spawn.js:40:14)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at ChildProcess.emit (events.js:191:7)
+14 verbose stack     at maybeClose (internal/child_process.js:877:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+15 verbose pkgid confusionserver@0.0.0
+16 verbose cwd /Users/sureshd/Documents/Personal/Courses/courseraNodejs/conFusionServer
+17 error Darwin 16.7.0
+18 error argv "/usr/local/bin/node" "/Users/sureshd/npm-global/bin/npm" "start"
+19 error node v6.9.0
+20 error npm  v4.0.5
+21 error code ELIFECYCLE
+22 error confusionserver@0.0.0 start: `node ./bin/www`
+22 error Exit status 1
+23 error Failed at the confusionserver@0.0.0 start script 'node ./bin/www'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the confusionserver package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     node ./bin/www
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs confusionserver
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls confusionserver
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]
